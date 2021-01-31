@@ -3,71 +3,18 @@
 <head>
 
 	<title>js-project</title>
+
 </head>
 <body>
  
   <label>Find User</label>
   <input type="text" id="input">
-  <button id="submit">Search</button>
+  <button id="btn-submit" >Search</button>
 
   <div id="response">
-  	
+	  	
 
   </div>
-
-
-  <script type="text/javascript">
-  	// Better variable names
-   const inputText = document.querySelector("#input");
-   const SubmitButton = document.querySelector("#submit");
-   const theResponse = document.querySelector("#response");
-
-   theSubmit.onclick = function () {
-   	 getRepositories();
-   }
-
-   function gettRepositoies() {
-
-   	 if (theInput.value == undefined) {
-   	 	
-       theResponse.innerHTML = '<span>Please Enter A Username</span>'
-
-   	 } else {
-   	 	// var url='https://api.github.com/users/'+theInput;
-   	 	// fetch(url)
-      //    .then(response => response.json())
-
-      //    .then((data) => {
-      //      data.forEach(user => {
-
-      //      	console.log(user)
-
-      //      	const mainDiv = document.createElement('div');
-
-      //      	const userName = document.createTextNode(user);
-
-      //      	mainDiv.appendChild(userName);
-
-      //      }) 
-      //    });
-       var url='https://api.github.com/users/'+inputText.value;
-       var response=fetch(url)
-         .then(response => response.json())
-         .then(data => {
-         	
-         })
-
-		
-   	 }
-
-
-
-
-   }
-
-
-
-  </script>
-
+	<script language="javascript" src="index.js" type="text/javascript"></script>
 </body>
 </html>
