@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise one</title>
+</head>
+<body>
+<label>Insert your project</label>
+<input type="text" name="project-name" id="project-name" />
+<input type="button" name="button" id="submit" value="Submit">
+<script type="text/javascript">	
+	//First method -- requires onclick on the input button tag 
+	// function Submit(){
+	// 	console.log(document.getElementById("project-name").value);
+	// }
+	// Second method 
+	document.getElementById("submit").addEventListener('click',()=>console.log(document.getElementById('project-name').value));
+
+	var request = new XMLHttpRequest();
+
+	// Initialize a request
+	request.open('get', 'https://api.github.com/search/repositories?q=testing');
+
+	console.log(request);
+// https://api.github.com/search/repositories?q=testing
+// Github search API 
+// "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}"
+
+</script>
+</body>
+</html>
