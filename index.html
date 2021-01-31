@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
 	<title>js-project</title>
 </head>
 <body>
@@ -17,18 +17,18 @@
 
 
   <script type="text/javascript">
-  	
-   const theInput = document.querySelector("#input");
-   const theSubmit = document.querySelector("#submit");
+  	// Better variable names
+   const inputText = document.querySelector("#input");
+   const SubmitButton = document.querySelector("#submit");
    const theResponse = document.querySelector("#response");
 
    theSubmit.onclick = function () {
-   	 requestProject();
+   	 getRepositories();
    }
 
-   function requestProject() {
+   function gettRepositoies() {
 
-   	 if (theInput.value === '') {
+   	 if (theInput.value == undefined) {
    	 	
        theResponse.innerHTML = '<span>Please Enter A Username</span>'
 
@@ -50,7 +50,7 @@
 
       //      }) 
       //    });
-       var url='https://api.github.com/users/'+theInput.value;
+       var url='https://api.github.com/users/'+inputText.value;
        var response=fetch(url)
          .then(response => response.json())
          .then(data => {
