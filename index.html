@@ -18,53 +18,112 @@
 
   <script type="text/javascript">
   	
-   const theInput = document.querySelector("#input");
-   const theSubmit = document.querySelector("#submit");
+   const inputText = document.querySelector("#input");
+   const submitButton = document.querySelector("#submit");
    const theResponse = document.querySelector("#response");
 
-   theSubmit.onclick = function () {
-   	 requestProject();
+   submitButton.onclick = function () {
+   	 getRepositories();
    }
 
-   function requestProject() {
+   function getRepositories() {
 
-   	 if (theInput.value === '') {
+   	 if (inputText.value == '') {
    	 	
-       theResponse.innerHTML = '<span>Please Enter A Username</span>'
+       theResponse.innerHTML = '<span>Please Enter Github Username</span>';
 
    	 } else {
-   	 	// var url='https://api.github.com/users/'+theInput;
-   	 	// fetch(url)
-      //    .then(response => response.json())
-
-      //    .then((data) => {
-      //      data.forEach(user => {
-
-      //      	console.log(user)
-
-      //      	const mainDiv = document.createElement('div');
-
-      //      	const userName = document.createTextNode(user);
-
-      //      	mainDiv.appendChild(userName);
-
-      //      }) 
-      //    });
-       var url='https://api.github.com/users/'+theInput.value;
+ 
+       var url='https://api.github.com/users/' + inputText.value;
        var response=fetch(url)
+
          .then(response => response.json())
+
          .then(data => {
          	
+         	let name = data.name;
+
+         	let bio = data.bio;
+         	
+         	let location = data.location;
+         	
+         	let email = data.email;
+         	
+         	let accountAddreas = data.html_url;
+
+        //-----------------------------------------------------------------------
+
+
+            //create a div and text for the username
+         	let userDiv = document.createElement('div');
+            let userName = document.createTextNode(`Username: ${name}`);
+
+            //appends the username to a div(userDive)
+            userDiv.appendChild(userName);
+
+            //appends the div(userDive) to the main Response div(theResponse)
+            theResponse.appendChild(userDiv);
+
+        //-----------------------------------------------------------------------
+
+            // create a div and text for the bio 
+            let bioDiv = document.createElement('div');
+            let bioName = document.createTextNode(`Bio: ${bio}`);
+
+            // appends the bio to a div(bioDiv)
+            bioDiv.appendChild(bioName);
+
+            // appends the div(bioDiv) to the main Response div(theResponse)
+            theResponse.appendChild(bioDiv);
+
+
+        //------------------------------------------------------------------------
+
+            //Create a div and text for the location
+            let locationDiv = document.createElement('div');
+            let locationName = document.createTextNode(`Location: ${location}`);
+
+            locationDiv.appendChild(locationName);
+
+            theResponse.appendChild(locationDiv);
+
+
+        //-------------------------------------------------------------------------
+
+
+            //create a div for the email
+            let emailDiv = document.createElement('div');
+            let emailName = document.createTextNode(`Email: ${email}`);
+
+            emailDiv.appendChild(emailName);
+
+            theResponse.appendChild(emailName);
+
+
+        //--------------------------------------------------------------------------
+
+            //create a div and a link for the profile page url
+            let accountDiv = document.createElement('div');
+            let accountLink = document.createElement('a');
+            let accountText = document.createTextNode(`Vist the developer's profile page: `);
+
+
+            // specifices the path of the url and opens it in a new tab
+            accountLink.href = `https://github.com/${inputText.value}`;
+            accountLink.setAttribute('target', '_blank');
+
+            //appends the text (accountText) to the <a> (accountLink)
+            accountLink.appendChild(accountText);
+
+            //appends the <a> (accountLink) to a div (accountDiv)
+            accountDiv.appendChild(accountLink);
+
+            // appends the div (accountDiv) to the main Response Div(theResponse)
+            theResponse.appendChild(accountDiv);
+   
          })
-
-		
    	 }
-
-
-
-
    }
-
 
 
   </script>
